@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @client %>
+
+<% if request.subdomain == 'seller' %>
+<div>
+  <%= link_to "Edit this seller", edit_seller_path(@client) %> |
+  <%= link_to "Back to sellers", seller_home_path %>
+  <%= button_to "Destroy this seller", @client, method: :delete %>
+</div>
+<div>
+  <%= link_to "Create product with this seller", new_product_seller_path %>
+</div>
+<% elsif request.subdomain == 'buyer' %>
+<div>
+  <%= link_to "Edit this buyer", edit_buyer_path(@client) %> |
+  <%= link_to "Back to buyers", buyer_home_path %>
+  <%= button_to "Destroy this buyer", @client, method: :delete %>
+</div>
+<div>
+  <%= link_to "Buy product with this buyer", new_product_path %>
+</div>
+<% end %>
