@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application support multi-domain (seller.localhost:3000 and buyer.localhost:3000) also using [Single Table Inheritance](https://en.wikipedia.org/wiki/Single_table_inheritance).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: 2.7.5
+* Rails version: 7.0.1
+* NPM: 7.18.1
+* NodeJs: 16.4.0
+* Yarn: 1.22.17
+* Database seed: `rails db:seed`
+* How to run the test suite: `bundle exec rspec`
