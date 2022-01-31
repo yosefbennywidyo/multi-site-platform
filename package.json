@@ -1,0 +1,15 @@
+{
+  "name": "my-new-project",
+  "version": "1.0.0",
+  "description": "Multi Site Platform.",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/yosefbennywidyo/multi-site-platform.git",
+    "type": "git"
+  },
+  "author": "Yosef Benny Widyokarsono <yosefbennywidyo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@rails/request.js": "^0.0.6"
+  }
+}
