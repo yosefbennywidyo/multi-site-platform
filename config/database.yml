@@ -18,15 +18,63 @@ default: &default
   socket: /tmp/mysql.sock
 
 development:
-  <<: *default
-  database: multi_site_platform_development
+  primary:
+    <<: *default
+    database: multi_site_platform_development
+  primary_replica:
+    <<: *default
+    database: multi_site_platform_development
+    username: root_readonly
+    replica: true
+  primary_seller:
+    <<: *default
+    database: multi_site_platform_development_seller
+    migrations_paths: db/sellers_migrations
+  primary_seller_replica:
+    <<: *default
+    database: multi_site_platform_development_seller
+    username: root_readonly
+    replica: true
+  primary_buyer:
+    <<: *default
+    database: multi_site_platform_development_buyer
+    migrations_paths: db/buyers_migrations
+  primary_buyer_replica:
+    <<: *default
+    database: multi_site_platform_development_buyer
+    username: root_readonly
+    replica: true
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: multi_site_platform_test
+  primary:
+    <<: *default
+    database: multi_site_platform_test
+  primary_replica:
+    <<: *default
+    database: multi_site_platform_test
+    username: root_readonly
+    replica: true
+  primary_seller:
+    <<: *default
+    database: multi_site_platform_test_seller
+    migrations_paths: db/sellers_migrations
+  primary_seller_replica:
+    <<: *default
+    database: multi_site_platform_test_seller
+    username: root_readonly
+    replica: true
+  primary_buyer:
+    <<: *default
+    database: multi_site_platform_test_buyer
+    migrations_paths: db/buyers_migrations
+  primary_buyer_replica:
+    <<: *default
+    database: multi_site_platform_test_buyer
+    username: root_readonly
+    replica: true
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +98,40 @@ test:
 #
 production:
   <<: *default
-  database: multi_site_platform_production
-  username: multi_site_platform
-  password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PASSWORD"] %>
+  primary:
+    <<: *default
+    database: multi_site_platform_production
+    username: multi_site_platform
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_PASSWORD"] %>
+  primary_replica:
+    <<: *default
+    database: multi_site_platform_production
+    username: multi_site_platform_readonly
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_READONLY_PASSWORD"] %>
+    replica: true
+  primary_seller:
+    <<: *default
+    database: multi_site_platform_production_seller
+    username: multi_site_platform
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_PASSWORD"] %>
+    migrations_paths: db/sellers_migrations
+  primary_seller_replica:
+    <<: *default
+    database: multi_site_platform_production_seller
+    username: multi_site_platform_readonly
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_READONLY_PASSWORD"] %>
+    username: root_readonly
+    replica: true
+  primary_buyer:
+    <<: *default
+    database: multi_site_platform_production_buyer
+    username: multi_site_platform
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_PASSWORD"] %>
+    migrations_paths: db/buyers_migrations
+  primary_buyer_replica:
+    <<: *default
+    database: multi_site_platform_production_buyer
+    username: multi_site_platform_readonly
+    password: <%= ENV["MULTI_SITE_PLATFORM_DATABASE_PRODUCTION_READONLY_PASSWORD"] %>
+    username: root_readonly
+    replica: true
