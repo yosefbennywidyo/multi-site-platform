@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @seller %>
+
+<div>
+  <%= link_to "Edit this seller", edit_seller_path(@seller) %> |
+  <%= link_to "Back to sellers", sellers_path %>
+
+  <%= button_to "Destroy #{@seller.slug} seller", @seller, method: :delete %>
+</div>
+<div>
+  <%= link_to "Create products", new_product_seller_path(@seller) %>
+  <% if @seller_products.length > 0 %>
+  <%= link_to "View #{@seller.slug} products", show_product_seller_path(@seller) %>
+  <% end %>
+</div>

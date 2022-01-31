@@ -1,0 +1,27 @@
+<h1>Editing Seller Product</h1>
+
+<p style="color: green"><%= notice %></p>
+
+<div id="<%= dom_id @product %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
+
+  <p>
+    <strong>Slug:</strong>
+    <%= @product.slug %>
+  </p>
+
+  <p>
+    <strong>ID:</strong>
+    <%= @product.id %>
+  </p>
+
+</div>
+
+<br>
+
+<div>
+  <%= link_to "Back to seller products", sellers_path %>
+</div>

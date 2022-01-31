@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @buyer %>
+
+<div>
+  <%= link_to "Edit this buyer", edit_buyer_path(@buyer) %> |
+  <%= link_to "Back to buyers", buyers_path %> |
+  <%= link_to "Create order with #{@buyer.name}", new_order_buyer_path(:client_id => @buyer.id) %>
+<%
+=begin%>
+  <%= button_to "Destroy this buyer", @buyer, method: :delete %>
+<%
+=end%>
+</div>

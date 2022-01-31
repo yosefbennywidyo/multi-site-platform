@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="<%= dom_id @product %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
+
+  <p>
+    <strong>Slug:</strong>
+    <%= @product.slug %>
+  </p>
+
+  <p>
+    <strong>ID:</strong>
+    <%= @product.id %>
+  </p>
+
+</div>
+
+<div>
+  <%= link_to "Edit this product", edit_product_seller_path(:id => @product.id) %> | <%= link_to "Back to seller products", list_products_seller_path %>
+<%
+=begin %>
+  <%= button_to "Destroy #{@product.slug} product", destroy_product_seller_path(:id => @product.id, :seller_id => @product.seller_id), method: :delete %>
+<%
+=end
+%>
+</div>

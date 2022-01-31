@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Seller Product Details</h1>
+
+<div id="sellers">
+  <% @products.each do |product| %>
+    <div id="<%= dom_id product %>">
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Slug:</strong>
+    <%= product.slug %>
+  </p>
+
+  <p>
+    <strong>ID:</strong>
+    <%= product.id %>
+  </p>
+
+</div>
+    <p>
+      <%= link_to "Show this product details", show_product_seller_path %>
+    </p>
+  <% end %>
+</div>
+

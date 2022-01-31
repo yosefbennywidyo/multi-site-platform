@@ -1,0 +1,59 @@
+<h1>New Order</h1>
+
+<%= form_with(model: @order, url: client_transactions_path(:client_id => @buyer.id)) do |form| %>
+  <% if @order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% @order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div data-controller="seller">
+  <div>
+    <%= form.label :product, style: "display: block" %>
+    <%= form.select :product, @products, { prompt: 'Select a product' }, { class: 'form-select', data: { action: "change->seller#change" } } %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.select :price, [], {}, { class: 'form-select', data: { price_target: "transaction_price" } } %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, style: "display: block" %>
+    <%= form.text_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+</div>
+
+  <div>
+    <%= form.hidden_field(:type, :value => "Order") %>
+  </div>
+
+  <div>
+    <%= form.hidden_field(:buyer_id, :value => "#{@buyer.id}") %>
+  </div>
+
+  <div>
+    <%= form.hidden_field(:bill_number, :value => "#{SecureRandom.alphanumeric(100)}") %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Order" %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to buyers", buyer_home_url %>
+</div>
