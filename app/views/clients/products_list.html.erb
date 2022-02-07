@@ -1,0 +1,27 @@
+<div class="2xl:container 2xl:mx-auto">
+  <div class="lg:px-20 md:px-6 px-4 md:py-12 py-8">
+    <p style="color: green"><%= notice %></p>
+    <div>
+      <h1 class="text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-white text-center dark:text-gray-50">Products</h1>
+    </div>
+    <div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 mt-10 md:mt-10">
+        <% @products.each do |product| %>
+          <% cache ["v1", product] do %>
+            <div id="<%= dom_id product %>" class="bg-gray-50 dark:bg-gray-800">
+              <div class="text-center">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white mt-2"><%= product.name %></h2>
+                <p class="text-l text-gray-600 dark:text-white">Product detail</p>
+                <img class="inline" src="https://i.ibb.co/8403ZFZ/pexels-hormel-2762247-removebg-preview-2-1.png" alt="A chair with designed back" role="img" />
+              </div>
+              <div class="flex justify-between text-white text-sm font-bold">
+                  <%= check_product_quantity(product) %>
+              </div>
+              <div class="flex justify-between text-white text-sm font-bold">
+                <%= check_product_stock(product) %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+      <div class="w-3/4 bg-white px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+          <% if @products_shopping_cart.present? %>
+          <h2 class="font-semibold text-2xl"><%= @products_shopping_cart.length %></h2>
+          <% else %>
+          <h2 class="font-semibold text-2xl">-</h2>
+          <% end %>
+        </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+        </div>
+
+        <% if @products_shopping_cart.present? %>
+        <div id="shopping_cart">
+          <% @products_shopping_cart.each do |product_in_shopping_cart| %>
+            <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+              <div class="flex w-2/5"> <!-- product -->
+                <div class="w-20">
+                  <img class="h-24" src="https://i.ibb.co/8403ZFZ/pexels-hormel-2762247-removebg-preview-2-1.png" alt="">
+                </div>
+                <div class="flex flex-col justify-between ml-4 flex-grow">
+                  <span class="font-bold text-sm"><%= product_in_shopping_cart[-1] %></span>
+                </div>
+              </div>
+              <span class="hidden text-center w-1/5 font-semibold text-sm"><%= product_in_shopping_cart[0] %></span>
+              <span class="text-center w-1/5 font-semibold text-sm"><%= product_in_shopping_cart[1] %></span>
+              <span class="text-center w-1/5 font-semibold text-sm"><%= product_in_shopping_cart[2] %></span>
+              <span class="text-center w-1/5 font-semibold text-sm"><%= product_in_shopping_cart[1] * product_in_shopping_cart[2] %></span>
+              <% @total_price += (product_in_shopping_cart[1] * product_in_shopping_cart[2]) %>
+            </div>
+          <% end %>
+        </div>
+        <% else %>
+        <div id="shopping_cart">
+            <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+              <div class="flex w-2/5"> <!-- product -->
+                <div class="w-20">
+                  <img class="h-24" src="https://i.ibb.co/8403ZFZ/pexels-hormel-2762247-removebg-preview-2-1.png" alt="">
+                </div>
+                <div class="flex flex-col justify-between ml-4 flex-grow">
+                  <span class="font-bold text-sm">-</span>
+                </div>
+              </div>
+              <span class="text-center w-1/5 font-semibold text-sm">-</span>
+              <span class="text-center w-1/5 font-semibold text-sm">-</span>
+              <span class="text-center w-1/5 font-semibold text-sm">-</span>
+            </div>
+        </div>
+        <% end %>
+        
+        <%= link_to "Continue shopping", root_path, class: "flex font-semibold text-indigo-600 text-sm mt-10" %>
+      </div>
+
+      <% if @products_shopping_cart.present? %>
+      <div id="summary" class="w-1/4 px-8 py-10">
+        <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+        <div class="flex justify-between mt-10 mb-5">
+          <span class="font-semibold text-sm uppercase">Items</span>
+          <span class="font-semibold text-sm"><%= @products_shopping_cart.length %></span>
+        </div>
+        <div class="border-t mt-8">
+          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+            <span>Total cost</span>
+            <span><%= @total_price %></span>
+          </div>
+          <%= button_to "Checkout", checkout_shopping_cart_path(@products_shopping_cart_hash.push(order: true).to_json), class: "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full" %>
+        </div>
+      </div>
+      <% else %>
+      <div id="summary" class="w-1/4 px-8 py-10">
+        <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+        <div class="flex justify-between mt-10 mb-5">
+          <span class="font-semibold text-sm uppercase">Items</span>
+          <span class="font-semibold text-sm">-</span>
+        </div>
+        <div class="border-t mt-8">
+          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+            <span>Total cost</span>
+            <span>-</span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>

@@ -1,17 +1,17 @@
-<div id="<%= dom_id client %>">
-  <p>
-    <strong>Slug:</strong>
-    <%= client.slug %>
-  </p>
+      <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
+				<div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
+					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&w=128&h=128&q=60&facepad=2"
+						 alt=""
+						 class="h-full w-full">
+				</div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= client.name %>
-  </p>
+				<h2 class="mt-4 font-bold text-xl"><%= client.name %></h2>
+				<h6 class="mt-2 text-sm font-medium"><%= client.slug %></h6>
+        <p class="mt-2 text-sm font-medium"><%= client.email %></p>
+        <p class="mt-2 text-sm font-medium"><%= client.password %></p>
+        <p class="mt-2 text-sm font-medium"><%= client.password_confirmation %></p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= client.email %>
-  </p>
-
-</div>
+				<p class="text-xs text-gray-500 text-center mt-3">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.
+				</p>
+			</div>
