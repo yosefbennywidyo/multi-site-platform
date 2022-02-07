@@ -4,8 +4,20 @@ This application support multi-domain (seller.localhost:3000 and buyer.localhost
 
 * Ruby version: 2.7.5
 * Rails version: 7.0.1
+* Database: MySQL
+* Redis: `redis-server`
 * NPM: 7.18.1
 * NodeJs: 16.4.0
 * Yarn: 1.22.17
 * Database seed: `rails db:seed`
 * How to run the test suite: `bundle exec rspec`
+
+```bash
+bin/dev
+
+redis-server
+
+redis-cli
+# KEYS *
+# FLUSHALL
+```
