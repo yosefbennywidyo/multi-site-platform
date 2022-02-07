@@ -2,12 +2,28 @@
 
 <h1>All Buyers</h1>
 
-<div id="buyers">
+<div id="buyers" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
   <% @buyers.each do |buyer| %>
-    <%= render buyer %>
-    <p>
-      <%= link_to "Show this buyer", buyer_path(buyer) %>
-    </p>
+    <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
+				<div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
+					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&w=128&h=128&q=60&facepad=2"
+						 alt=""
+						 class="h-full w-full">
+				</div>
+
+				<h2 class="mt-4 font-bold text-xl"><%= buyer.name %></h2>
+				<h6 class="mt-2 text-sm font-medium"><%= buyer.slug %></h6>
+        <p class="mt-2 text-sm font-medium"><%= buyer.email %></p>
+        <p class="mt-2 text-sm font-medium"><%= buyer.password %></p>
+        <p class="mt-2 text-sm font-medium"><%= buyer.password_confirmation %></p>
+
+				<p class="text-xs text-gray-500 text-center mt-3">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.
+				</p>
+        <p>
+          <%= link_to "Show this buyer", buyer_path(buyer) %>
+        </p>
+			</div>
   <% end %>
 </div>
 
