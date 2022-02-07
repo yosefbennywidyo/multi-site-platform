@@ -1,8 +1,13 @@
 class Client < ApplicationRecord
+  has_secure_password
+
   validates :email, presence: true
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :name, uniqueness: true
+  validates :password, presence: true
+
+  has_one :shopping_cart
 
   scope :exclude, -> (*values) { 
     where(
