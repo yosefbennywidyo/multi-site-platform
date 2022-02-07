@@ -72,7 +72,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       read_seller_with_tenant do
-        @product = Product.find_by_seller_id(params[:id])
+        @product = Product.find_by_id(params[:id])
       end
     end
 
