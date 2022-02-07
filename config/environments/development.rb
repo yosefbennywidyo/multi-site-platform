@@ -23,7 +23,18 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    config.cache_store = :redis_cache_store, { url: Rails.application.credentials.redis[:url],
+      connect_timeout:    30,  # Defaults to 20 seconds
+      read_timeout:       0.2, # Defaults to 1 second
+      write_timeout:      0.2, # Defaults to 1 second
+      reconnect_attempts: 1,   # Defaults to 0
+
+      error_handler: -> (method:, returning:, exception:) {
+        # Report errors to Sentry as warnings
+        Rails.logger.debug "RedisCacheStore error: [method]: #{method}; [returning]: #{returning}; [exception]: #{exception.message}"
+      }
+    }
+
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
@@ -70,4 +81,7 @@ Rails.application.configure do
 
   # set subdomain on localhost
   config.action_dispatch.tld_length = 0
+
+  # tags for logging
+  config.log_tags = [ :subdomain, :domain, :uuid, :raw_request_method]
 end
