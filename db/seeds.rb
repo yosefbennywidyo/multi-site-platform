@@ -5,13 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "Start Seed"
 include Tenantable
 
 i = 1
 for i in 1..10 do
-  Seller.create(name: "Seller #{i}", type: "Seller", slug: "seller-#{i}", email: "seller-#{i}@test.com", password: "seller-1")
-  Buyer.create(name: "Buyer #{i}", type: "Buyer", slug: "buyer-#{i}", email: "buyer-#{i}@test.com", password: "buyer-1")
+  Seller.create(name: "Seller #{i}", type: "Seller", slug: "seller-#{i}", email: "seller-#{i}@test.com", password: "seller-#{i}", password_confirmation: "seller-#{i}")
+  Buyer.create(name: "Buyer #{i}", type: "Buyer", slug: "buyer-#{i}", email: "buyer-#{i}@test.com", password: "buyer-#{i}", password_confirmation: "buyer-#{i}")
 end
+
+puts "Sellers: #{Seller.all.length}"
+puts "Buyers: #{Buyer.all.length}"
 
 all_seller = Seller.all
 
@@ -24,13 +28,26 @@ all_seller.each do |seller|
 end
 
 read_seller_with_tenant do
-  @product_details = Product.all.pluck(:id, :seller_id)
+  @all_products = Product.all.pluck(:id, :seller_id)
 end
 
-@product_details.each do |product_id, seller_id|
-  10.times do
-    write_to_seller_with_tenant do
-      ProductDetail.create(product_id: @product_details.sample[0], quantity: 1000, price: 1000, type: 'Purchase')
+puts "Products: #{@all_products.length}"
+
+
+@all_products.each do |product_id, seller_id|
+  write_to_seller_with_tenant do
+    if product_id % 2 == 0
+      ProductDetail.create(product_id: product_id, quantity: 0, price: 1000, type: 'Purchase')
+    else
+      ProductDetail.create(product_id: product_id, quantity: 1000, price: 1000, type: 'Purchase')
     end
   end
 end
+
+read_seller_with_tenant do
+  @all_product_details = ProductDetail.all
+end
+
+puts "Product Details: #{@all_product_details.length}"
+
+puts "End Seed"
