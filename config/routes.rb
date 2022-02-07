@@ -44,10 +44,25 @@ Rails.application.routes.draw do
     resources :transactions
   end
 
+  get "/signup", to: "clients#new"
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create"
+  delete "/sessions", to: "sessions#destroy"
+  
+  post '/products/', to: 'products#order', as: 'order_product'
+  get '/products/:id', to: 'products#show', as: 'show_product'
+  
   get '/get_price', to: 'clients#get_price'
+  get '/shopping_cart', to: 'clients#shopping_cart'
+  get '/enqueue_cart', to: 'clients#enqueue_cart'
+  post '/add_to_shopping_cart/:product_id', to: 'clients#add_to_shopping_cart', as: 'add_to_shopping_cart'
+  post '/add_to_enqueue_cart/:product_id', to: 'clients#add_to_enqueue_cart', as: 'add_to_enqueue_cart'
+  post '/remove_from_shopping_cart/:product_id', to: 'clients#remove_from_shopping_cart', as: 'remove_from_shopping_cart'
+  post '/remove_from_enqueue_cart/:product_id', to: 'clients#remove_from_enqueue_cart', as: 'remove_from_enqueue_cart'
+  post '/checkout_cart/:product_id', to: 'clients#checkout_cart', as: 'checkout_cart'
 
   # Defines the root path route ("/")
-  root "clients#index"
+  root "clients#products_list"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
