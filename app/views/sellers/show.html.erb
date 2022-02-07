@@ -1,16 +1,27 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @seller %>
-
-<div>
-  <%= link_to "Edit this seller", edit_seller_path(@seller) %> |
-  <%= link_to "Back to sellers", sellers_path %>
-
-  <%= button_to "Destroy #{@seller.slug} seller", @seller, method: :delete %>
-</div>
-<div>
-  <%= link_to "Create products", new_product_seller_path(@seller) %>
-  <% if @seller_products.length > 0 %>
-  <%= link_to "View #{@seller.slug} products", show_product_seller_path(@seller) %>
-  <% end %>
+<div id="clients" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+  <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
+    <div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&w=128&h=128&q=60&facepad=2"
+        alt=""
+        class="h-full w-full">
+    </div>
+    
+    <h2 class="mt-4 font-bold text-xl"><%= @seller.name %></h2>
+    <h6 class="mt-2 text-sm font-medium"><%= @seller.slug %></h6>
+    <p class="mt-2 text-sm font-medium"><%= @seller.email %></p>
+    
+    <p class="text-xs text-gray-500 text-center mt-3">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim molestiae nulla.
+    </p>
+    <div>
+      <%= link_to "Edit this seller", edit_seller_path(@seller) %> |
+      <%= link_to "Back to sellers", sellers_path %>
+    </div>
+    <div>
+      <% if @seller_products.length > 0 %>
+      <%= link_to "View #{@seller.slug} products", list_products_seller_path %>
+      <% end %>
+    </div>
+  </div>
 </div>
