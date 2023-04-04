@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -13,7 +13,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.6", ">= 5.6.4"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -22,8 +22,8 @@ gem "hotwire-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 gem "importmap-rails" # must be before 'requestjs-rails'
-gem "requestjs-rails"
-gem "tailwindcss-rails", "~> 2.0"
+gem "requestjs-rails", ">= 0.0.8"
+gem "tailwindcss-rails", "~> 2.0", ">= 2.0.5"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Sidekiq
-gem "sidekiq"
+gem "sidekiq", ">= 7.0.0"
 
 # increase the number of available connections to Redis
 gem "connection_pool"
