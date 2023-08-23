@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.0.7", ">= 7.0.7.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -16,14 +16,14 @@ gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", ">= 1.1.0"
 
 gem "hotwire-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
-gem "importmap-rails" # must be before 'requestjs-rails'
-gem "requestjs-rails"
-gem "tailwindcss-rails", "~> 2.0"
+gem "stimulus-rails", ">= 1.0.3"
+gem "importmap-rails" , ">= 1.0.3" # must be before 'requestjs-rails'
+gem "requestjs-rails", ">= 0.0.8"
+gem "tailwindcss-rails", "~> 2.0", ">= 2.0.5"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -60,7 +60,7 @@ gem "connection_pool"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails"
+  gem "rspec-rails", ">= 5.1.1"
   gem "factory_bot_rails"
   gem "faker"
 end
@@ -82,5 +82,5 @@ group :test do
   gem 'launchy', '~> 2.4', '>= 2.4.3'
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem "database_cleaner"
+  gem "database_cleaner", ">= 2.0.2"
 end
