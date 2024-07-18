@@ -80,7 +80,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem 'launchy', '~> 2.4', '>= 2.4.3'
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "selenium-webdriver", ">= 4.2.0"
+  gem "webdrivers", ">= 5.1.0"
   gem "database_cleaner"
 end
