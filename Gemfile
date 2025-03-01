@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Sidekiq
-gem "sidekiq"
+gem "sidekiq", ">= 7.0.8"
 
 # increase the number of available connections to Redis
 gem "connection_pool"
