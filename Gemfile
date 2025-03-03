@@ -22,8 +22,8 @@ gem "hotwire-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 gem "importmap-rails" # must be before 'requestjs-rails'
-gem "requestjs-rails"
-gem "tailwindcss-rails", "~> 2.0"
+gem "requestjs-rails", ">= 0.0.8"
+gem "tailwindcss-rails", "~> 2.0", ">= 2.0.5"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
