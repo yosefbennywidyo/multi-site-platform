@@ -16,7 +16,7 @@ gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.6", ">= 5.6.9"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", ">= 2.0.13"
 
 gem "hotwire-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
