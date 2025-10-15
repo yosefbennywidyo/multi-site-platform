@@ -4,10 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.1"
+gem "rails", "~> 7.0.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "sprockets-rails", ">= 3.5.0"
 
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
@@ -16,14 +16,14 @@ gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.6", ">= 5.6.9"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", ">= 1.1.0"
 
 gem "hotwire-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
-gem "importmap-rails" # must be before 'requestjs-rails'
-gem "requestjs-rails"
-gem "tailwindcss-rails", "~> 2.0"
+gem "stimulus-rails", ">= 1.0.3"
+gem "importmap-rails" , ">= 1.0.3" # must be before 'requestjs-rails'
+gem "requestjs-rails", ">= 0.0.8"
+gem "tailwindcss-rails", "~> 2.0", ">= 2.0.5"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Sidekiq
-gem "sidekiq"
+gem "sidekiq", ">= 6.4.1"
 
 # increase the number of available connections to Redis
 gem "connection_pool"
@@ -60,14 +60,14 @@ gem "connection_pool"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails"
-  gem "factory_bot_rails"
+  gem "rspec-rails", ">= 5.1.1"
+  gem "factory_bot_rails", ">= 6.3.0"
   gem "faker"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  gem "web-console", ">= 4.2.1"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -78,7 +78,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  gem "capybara", ">= 3.37.0"
   gem 'launchy', '~> 2.4', '>= 2.4.3'
   gem "selenium-webdriver"
   gem "webdrivers"
